@@ -1,0 +1,51 @@
+{
+  "name": "jayhun-tech",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "scripts": {
+    "setup:local": "node scripts/setup-local.mjs",
+    "local": "node server/index.mjs --local",
+    "dev": "node scripts/dev.mjs",
+    "dev:client": "vite --host 0.0.0.0 --port 3000 --strictPort",
+    "dev:server": "node --watch server/index.mjs",
+    "build": "tsc -b && vite build",
+    "build:pages": "tsc -b && vite build --mode pages && node scripts/prepare-pages.mjs",
+    "start": "node scripts/start.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "admin:create": "node scripts/admin-create.mjs",
+    "admin:reset": "node scripts/admin-create.mjs --reset --prompt",
+    "db:backup": "node scripts/database-transfer.mjs backup",
+    "db:restore": "node scripts/database-transfer.mjs restore",
+    "test:e2e": "playwright test",
+    "test:pages": "playwright test --config playwright.pages.config.ts",
+    "registrations:export": "node scripts/export-registrations.mjs",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "dependencies": {
+    "@fontsource-variable/inter": "^5.2.8",
+    "@fontsource-variable/manrope": "^5.2.8",
+    "@pdf-lib/fontkit": "^1.1.1",
+    "express": "^5.1.0",
+    "helmet": "^8.1.0",
+    "lucide-react": "^0.468.0",
+    "pdf-lib": "^1.17.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "sharp": "^0.35.5"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.58.0",
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^4.4.0",
+    "prettier": "3.6.2",
+    "typescript": "~5.8.3",
+    "vite": "^6.3.0"
+  }
+}
